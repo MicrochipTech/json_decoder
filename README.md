@@ -1,6 +1,7 @@
 # JSON Decoder
 
 JSON Decoder aims to:
+
 1. Be highly optimized for constrained embedded systems
 2. Work on both PIC18 and AVR
 
@@ -36,16 +37,16 @@ Parses a JSON string into a C representation. It supports string, number and obj
 
 ###### Params
 
-|Name|Description|
-|----|-----------|
-|str |A string representation of a JSON object. After parsing, the string will have been altered.|
+| Name | Type | Description                                                                                 |
+| ---- | ---- | ------------------------------------------------------------------------------------------- |
+| str  | IN   | A string representation of a JSON object. After parsing, the string will have been altered. |
 
 ###### Return
 
-|Name|Description|
-|----|-----------|
-|JSON_DECODER_OK|Decoding was successful|
-|JSON_DECODER_BAD_FORMAT|The input is invalid.|
+| Name                    | Description             |
+| ----------------------- | ----------------------- |
+| JSON_DECODER_OK         | Decoding was successful |
+| JSON_DECODER_BAD_FORMAT | The input is invalid.   |
 
 ## `JSON_DECODER_getRoot(jsonNode_t **pNode)`
 
@@ -56,15 +57,15 @@ This function must not be called before JSON_DECODER_fromString.
 
 ###### Params
 
-|Name|Description|
-|----|-----------|
-|pNode |Pointer to a jsonNode_t|
+| Name  | Type | Description                                                                                                             |
+| ----- | ---- | ----------------------------------------------------------------------------------------------------------------------- |
+| pNode | OUT  | Pointer to the root. When the function is called this parameter does not need to point to a valid `jsonNode_t` address. |
 
 ###### Return
 
-|Name|Description|
-|----|-----------|
-|JSON_DECODER_OK|pNode now points to the root|
+| Name            | Description                  |
+| --------------- | ---------------------------- |
+| JSON_DECODER_OK | pNode now points to the root |
 
 ## `jsonDecoderStatus_t JSON_DECODER_getObject(jsonNode_t *current, char *key, jsonNode_t **pNode)`
 
@@ -75,18 +76,18 @@ This function must not be called before JSON_DECODER_fromString.
 
 ###### Params
 
-|Name|Description|
-|----|-----------|
-|current |The JSON object to search into|
-|key| The key of the object to find |
-|pNode| Pointer to the object, if found|
+| Name    | Type | Description                                                                                                                         |
+| ------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| current | IN   | The JSON object to search into                                                                                                      |
+| key     | IN   | The key of the object to find                                                                                                       |
+| pNode   | OUT  | Pointer to the object, if found. When the function is called this parameter does not need to point to a valid `jsonNode_t` address. |
 
 ###### Return
 
-|Name|Description|
-|----|-----------|
-|JSON_DECODER_OK|Object was found and pNode now points to in|
-|JSON_DECODER_KEY_NOT_FOUND|The specified key does not exist|
+| Name                       | Description                                 |
+| -------------------------- | ------------------------------------------- |
+| JSON_DECODER_OK            | Object was found and pNode now points to in |
+| JSON_DECODER_KEY_NOT_FOUND | The specified key does not exist            |
 
 ## `jsonDecoderStatus_t JSON_DECODER_getString(jsonNode_t *current, char *key, uint8_t size, char *pVal)`
 
@@ -97,19 +98,19 @@ This function must not be called before JSON_DECODER_fromString.
 
 ###### Params
 
-|Name|Description|
-|----|-----------|
-|current |The JSON object to search into|
-|key| The key of the string to find|
-|size| Maximum size of the string. Should not be bigger than the length of the pVal buffer|
-|pVal| Pointer to the string, if found|
+| Name    | Type | Description                                                                         |
+| ------- | ---- | ----------------------------------------------------------------------------------- |
+| current | IN   | The JSON object to search into                                                      |
+| key     | IN   | The key of the string to find                                                       |
+| size    | IN   | Maximum size of the string. Should not be bigger than the length of the pVal buffer |
+| pVal    | OUT  | Pointer to the string, if found                                                     |
 
 ###### Return
 
-|Name|Description|
-|----|-----------|
-|JSON_DECODER_OK|String was found and pVal now points to in|
-|JSON_DECODER_KEY_NOT_FOUND|The specified key does not exist|
+| Name                       | Description                                |
+| -------------------------- | ------------------------------------------ |
+| JSON_DECODER_OK            | String was found and pVal now points to in |
+| JSON_DECODER_KEY_NOT_FOUND | The specified key does not exist           |
 
 ## `jsonDecoderStatus_t JSON_DECODER_getNumber(jsonNode_t *current, char *key, int *pVal)`
 
@@ -120,15 +121,15 @@ This function must not be called before JSON_DECODER_fromString.
 
 ###### Params
 
-|Name|Description|
-|----|-----------|
-|current |The JSON object to search into|
-|key| The key of the string to find|
-|pVal| Pointer to the number, if found|
+| Name    | Type | Description                     |
+| ------- | ---- | ------------------------------- |
+| current | IN   | The JSON object to search into  |
+| key     | IN   | The key of the string to find   |
+| pVal    | OUT  | Pointer to the number, if found |
 
 ###### Return
 
-|Name|Description|
-|----|-----------|
-|JSON_DECODER_OK|Number was found and pVal now points to in|
-|JSON_DECODER_KEY_NOT_FOUND|The specified key does not exist|
+| Name                       | Description                                |
+| -------------------------- | ------------------------------------------ |
+| JSON_DECODER_OK            | Number was found and pVal now points to in |
+| JSON_DECODER_KEY_NOT_FOUND | The specified key does not exist           |
